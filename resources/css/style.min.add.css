@@ -1,0 +1,43 @@
+.logo__link,
+.header-btn {
+    cursor: pointer;
+}
+
+.btn-bucket {
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/bucket/out.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer
+}
+
+.displaynone {
+    display: none;
+}
+
+.displayblock {
+    display: block;
+}
+
+.popap-btn {
+    border: none;
+}
+
+.bucket__form-wraper-2 {
+    padding-left: 83px;
+}
+
+.game-btn-buy {
+    height: 40px;
+}
+
+.nav__sega,
+.nav__nintendo,
+.nav__games,
+.nav__about {
+    cursor: pointer;
+}
