@@ -171,7 +171,7 @@
 
 
 
-					
+					{{Log::info($res)}}
 					@foreach ($res as $val)
 					<div class="game__card">
 						<div class="game__img">
