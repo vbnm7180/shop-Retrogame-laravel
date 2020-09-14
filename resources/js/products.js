@@ -34,6 +34,9 @@ $(".game-btn").on("click",
         let data = "categ=" + categ;
 
         //Загрузка карточек товаров с играми на главную страницу
-        $('.tabs__content').load('/models/gamesProductsModel.php', data);
+
+        $.get('/games' + data);
+
+        //$('.tabs__content').load('/models/gamesProductsModel.php', data);
     }
 );

@@ -167,6 +167,11 @@
 				</div>
 				<div class="tabs__sale">любая игра 299 &#8381; </div>
 				<div class="tabs__content">
+				    @foreach ($res as $val)
+					@include('gamesCard',$val)
+					@endforeach
+
+
 				</div>
 			</div>
 	</section>

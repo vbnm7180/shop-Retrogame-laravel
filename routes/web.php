@@ -36,3 +36,5 @@ Route::get('/account', function () {
         return view('account');
     }
 });
+
+Route::get('/games/{categ}', 'ProductsController@showGames');
