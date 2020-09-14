@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Models\GamesProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {
-    return view('main');
+    $res=GamesProduct::where('category_id','=', 7)->get();
+    return view('main')->with('res',$res);
 });
 
 

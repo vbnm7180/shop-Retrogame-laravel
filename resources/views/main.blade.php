@@ -170,9 +170,7 @@
 
 
 
-					{{$res=$res ?? ''}}
-					{{Log::info($res) }}
-					@if($res!='')
+
 					
 					@foreach ($res as $val)
 					<div class="game__card">
@@ -186,7 +184,7 @@
 						<!--<button class="btn game-btn-buy go-cart $go_btn_display" id="add_$section_id-$product_id">Перейти в корзину</button>-->
 					</div>
 					@endforeach
-					@endif
+
 
 				</div>
 			</div>

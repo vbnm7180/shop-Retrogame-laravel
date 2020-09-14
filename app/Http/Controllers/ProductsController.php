@@ -27,7 +27,7 @@ class ProductsController extends Controller
 
         //Log::info('req',$res);
 
-        return view('main')->with('res',$res);
+        return redirect('main')->with('res',$res);
 
     }
 }
