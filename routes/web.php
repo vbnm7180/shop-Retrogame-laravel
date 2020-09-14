@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,4 @@ Route::get('/account', function () {
     }
 });
 
-Route::get('/games/{categ}', 'ProductsController@showGames');
+Route::get('/games/{categ}', [ ProductsController::class, 'showGames' ]);

@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\GamesProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
+    /**
+     * Хранить нового пользователя.
+     *
+     * @param string $categ
+     */
 
 
 class ProductsController extends Controller
@@ -15,9 +21,13 @@ class ProductsController extends Controller
         preg_match($reg, $categ, $arr);
         $categ_id = $arr[1];
 
-        $res=GamesProduct::select('SELECT * FROM `games_products` WHERE `category_id`=' . $categ_id . '');
+        $res=GamesProduct::where('category_id','=', $categ_id)->get();
 
-        return view('main',$res);
+        //$res=(array)$res;
+
+        //Log::info('req',$res);
+
+        return view('main')->with('res',$res);
 
     }
 }

@@ -167,10 +167,26 @@
 				</div>
 				<div class="tabs__sale">любая игра 299 &#8381; </div>
 				<div class="tabs__content">
-				    @foreach ($res as $val)
-					@include('gamesCard',$val)
-					@endforeach
 
+
+
+					{{$res=$res ?? ''}}
+					{{Log::info($res) }}
+					@if($res!='')
+					
+					@foreach ($res as $val)
+					<div class="game__card">
+						<div class="game__img">
+							<img src="/images/games/{{$val['image']}}" alt="" class="game-img">
+						</div>
+						<div class="game__title">
+							{{$val['name']}}
+						</div>
+						<button class="btn game-btn-buy add-cart $add_btn_display" id="add_{{$val['$section_id']}}-{{$val['$product_id']}}">В корзину</button>
+						<!--<button class="btn game-btn-buy go-cart $go_btn_display" id="add_$section_id-$product_id">Перейти в корзину</button>-->
+					</div>
+					@endforeach
+					@endif
 
 				</div>
 			</div>
