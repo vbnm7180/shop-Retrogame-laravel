@@ -514,7 +514,7 @@ $(".card__btn").on("click",
     }
 );
 
-/*
+
 //Вывод карточек товаров с играми на главную страницу при ее загрузке
 $(window).on('load',
     function() {
@@ -523,12 +523,17 @@ $(window).on('load',
         let data = "2-7";
 
         //Загрузка карточек товаров с играми на главную страницу
-        $.get('/games/' + data);
-        //$('.tabs__content').load('/models/gamesProductsModel.php', data);
+        $.getJSON('/games/' + data, function(game) {
+            let content = '';
+            $.each(game, function() {
+                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button></div>';
+            });
+            $('.tabs__content').html(content);
+        });
     }
 
 );
-*/
+
 
 //Вывод карточек товаров с играми на главную страницу при переключении табов
 $(".game-btn").on("click",
