@@ -16,6 +16,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
+	<meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
 
 	<title>Retro game</title>
 </head>

@@ -377,7 +377,14 @@ $('body').on('click', '.add-cart',
 
         //Добавление товара в массив корзины, вычисление общей цены
         let data = add_prod[0];
-        $.post('/add-cart/' + data);
+
+        $.ajax({
+            method: 'POST',
+            url: '/add-cart/' + data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         //Смена кнопки с Добавить в корзину на Перейти в корзину
         //$(e.target).removeClass('displayblock').addClass('displaynone');
