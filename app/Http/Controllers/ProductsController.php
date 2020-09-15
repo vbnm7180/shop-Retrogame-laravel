@@ -23,11 +23,11 @@ class ProductsController extends Controller
 
         $res=GamesProduct::where('category_id','=', $categ_id)->get();
 
-        //$res=(array)$res;
+        $res=json_encode($res);
 
         //Log::info('req',$res);
 
-        return view('main')->with('res',$res);
+        return $res;
 
     }
 }
