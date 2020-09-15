@@ -41,3 +41,4 @@ Route::get('/account', function () {
 });
 
 Route::get('/games/{categ}', [ ProductsController::class, 'showGames' ]);
+Route::get('/consoles/{categ}', [ ProductsController::class, 'showConsoles' ]);

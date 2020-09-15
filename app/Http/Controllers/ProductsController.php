@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GamesProduct;
+use App\Models\ConsolesProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -22,6 +23,21 @@ class ProductsController extends Controller
         $categ_id = $arr[1];
 
         $res=GamesProduct::where('category_id','=', $categ_id)->get();
+
+        $res=json_encode($res);
+
+        //Log::info('req',$res);
+
+        return $res;
+
+    }
+
+    public function showConsoles($categ){
+        $reg = '/-(\d+)/';
+        preg_match($reg, $categ, $arr);
+        $categ_id = $arr[1];
+
+        $res=ConsolesProduct::where('category_id','=', $categ_id)->get();
 
         $res=json_encode($res);
 

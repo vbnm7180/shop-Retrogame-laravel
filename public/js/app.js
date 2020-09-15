@@ -506,11 +506,22 @@ $(".card__btn").on("click",
     function(e) {
 
         //Получение id категории товара
-        let categ = e.target.id;
-        let data = "categ=" + categ;
+        let data = e.target.id;
+
+
+
+
 
         //Загрузка товаров в модальное окно из базы данных
-        $('.popup__cards').load('/models/consolesProductsModel.php', data);
+
+        $.getJSON('/consoles/' + data, function(console) {
+            let content = '';
+            $.each(console, function() {
+                content = content + '<div class="popup__card"><div class="popup__img"><img src="/images/consoles/' + this.image + '" alt="\" class="popup-img"></div><div class="popup__title"><h3>' + this.name + '</h3></div><div class="popup__text">Состояние:&nbsp;' + this.condition_rating + '<br>' + this.description + '<br> Комплект:&nbsp;' + this.bundle + '<br> Регион:&nbsp;' + this.region + '<br> Цена:&nbsp;' + this.price + ' ₽</div><button type="button" class="btn popap-btn add-cart" id="add_' + this.section_id + '-' + this.product_id + '">Добавить в Корзину</button></div>';
+            });
+            $('.popup__cards').html(content);
+
+        })
     }
 );
 
