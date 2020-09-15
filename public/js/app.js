@@ -540,9 +540,11 @@ $(".game-btn").on("click",
         //Загрузка карточек товаров с играми на главную страницу
 
         $.getJSON('/games/' + data, function(game) {
+            let content = '';
             $.each(game, function() {
-                $('.tabs__content').append('<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button>');
+                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button></div>';
             });
+            $('.tabs__content').html(content);
         });
     });
 //Кнопка Зарегистрироваться
