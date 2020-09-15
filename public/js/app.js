@@ -376,12 +376,12 @@ $('body').on('click', '.add-cart',
         let add_prod = e.target.id.match(reg);
 
         //Добавление товара в массив корзины, вычисление общей цены
-        let data = "add_prod=" + add_prod[0];
-        $.get('/controllers/addToCartController.php', data);
+        let data = add_prod[0];
+        $.post('/add-cart/' + data);
 
         //Смена кнопки с Добавить в корзину на Перейти в корзину
-        $(e.target).removeClass('displayblock').addClass('displaynone');
-        $(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
+        //$(e.target).removeClass('displayblock').addClass('displaynone');
+        //$(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
     }
 );
 
