@@ -23,8 +23,7 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {
-    $res=GamesProduct::where('category_id','=', 7)->get();
-    return view('main')->with('res',$res);
+    return view('main');
 });
 
 
@@ -40,5 +39,8 @@ Route::get('/account', function () {
     }
 });
 
-Route::get('/games/{categ}', [ ProductsController::class, 'showGames' ]);
-Route::get('/consoles/{categ}', [ ProductsController::class, 'showConsoles' ]);
+Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
+
+Route::get('/consoles/{id}', [ ProductsController::class, 'showConsoles' ]);
+
+Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);

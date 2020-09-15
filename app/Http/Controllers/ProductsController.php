@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Log;
     /**
      * Хранить нового пользователя.
      *
-     * @param string $categ
+     * @param string $id
      */
 
 
 class ProductsController extends Controller
 {
-    public function showGames($categ)
+    public function showGames($id)
     {
         $reg = '/-(\d+)/';
-        preg_match($reg, $categ, $arr);
+        preg_match($reg, $id, $arr);
         $categ_id = $arr[1];
 
         $res=GamesProduct::where('category_id','=', $categ_id)->get();
@@ -32,9 +32,9 @@ class ProductsController extends Controller
 
     }
 
-    public function showConsoles($categ){
+    public function showConsoles($id){
         $reg = '/-(\d+)/';
-        preg_match($reg, $categ, $arr);
+        preg_match($reg, $id, $arr);
         $categ_id = $arr[1];
 
         $res=ConsolesProduct::where('category_id','=', $categ_id)->get();
