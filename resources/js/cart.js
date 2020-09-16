@@ -34,7 +34,20 @@ $('body').on('click', '.del-cart',
         let del_prod = e.target.id.match(reg);
 
         //Удаление товара из массива корзины, вычисление общей цены
-        let data = "del_prod=" + del_prod[0];
+        let data = del_prod[0];
+
+        $.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: '/del-cart/' + data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function() {
+
+            }
+        });
+
         $.getJSON('/controllers/deleteFromCartController.php', data, function(res) {
 
             //Если в корзине нет товаров, вывести текст

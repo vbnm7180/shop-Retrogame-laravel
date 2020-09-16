@@ -43,3 +43,5 @@ Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
 Route::get('/consoles/{id}', [ ProductsController::class, 'showConsoles' ]);
 
 Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);
+
+Route::post('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);

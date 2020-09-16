@@ -37,6 +37,24 @@ class CartController extends Controller
       //Log::info(session()->get('in_cart'));
    }
 
+   public function deleteFromCart($id)
+   {
+      $session_array = session()->get('in_cart');
+      if (in_array($id, $session_array)) {
+
+         //Поиск индекса товара
+         $index = array_search($id, $session_array);
+         //Удаление товара
+
+         unset($session_array[$index]);
+         //Переиндексирование
+         $session_array = array_values($session_array);
+         session()->put('in_cart', $session_array);
+
+         
+      }
+   }
+
    public function showCart()
    {
 
@@ -52,7 +70,7 @@ class CartController extends Controller
       $cart_products = $cart_products ?? [];
       $image_path = $image_path ?? '';
 
-      
+
       if ($total_count != 0) {
          $ids = session()->get('in_cart', []);
          foreach ($ids as $id) {
@@ -67,26 +85,22 @@ class CartController extends Controller
             //Выбор названия таблицы для запроса в базу данных
             if ($section_id == 1) {
                $cart_product = ConsolesProduct::where('product_id', '=', $product_id)->get();
-               $image_path='consoles';
+               $image_path = 'consoles';
             }
             if ($section_id == 2) {
                $cart_product = GamesProduct::where('product_id', '=', $product_id)->get();
-               $image_path='games';
+               $image_path = 'games';
             }
 
             //Log::info($cart_product);
-            $cart_products[]=$cart_product->toArray();
-
-
-
-
+            $cart_products[] = $cart_product->toArray();
          }
          //Log::info($cart_products);
-         
-      }
-      
 
-      $res = ['total_count' => $total_count, 'total_price' => $total_price, 'image_path'=>$image_path, 'cart_products' => $cart_products];
+      }
+
+
+      $res = ['total_count' => $total_count, 'total_price' => $total_price, 'image_path' => $image_path, 'cart_products' => $cart_products];
 
       //$res = json_encode($res);
 
@@ -94,6 +108,6 @@ class CartController extends Controller
 
       //view('cart')->render();
 
-      return view('cart')->with('res',$res);
+      return view('cart')->with('res', $res);
    }
 }
