@@ -1555,13 +1555,6 @@ template {
     height: 41px
 }
 
-.btn-bucket {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer
-}
-
 .sum-btn {
     background: #ffd44f;
     border-radius: 4px;

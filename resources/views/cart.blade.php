@@ -13,6 +13,22 @@
 				</div>
 			</div>
 			<div class="bucket__content-cards">
+				@php $ordinal=1 @endphp
+				@foreach($res['cart_products'] as $product)
+				<div class="bucket__product__card">
+					<div class="card__number">
+						{{ $ordinal}} .
+					</div>
+					<div class="card-img"><img src="/images/{{$res['image_path']}}/{{$product[0]['image']}}" alt="\"></div>
+					<div class="name_product">{{$product[0]['name']}}</div>
+					<div class="numberOf">1шт</div>
+					<div class="card-price">{{$product[0]['price']}}&#8381; </div>
+					<button class="btn-bucket del-cart" type="button" id="del_{{$product[0]['section_id']}}-{{$product[0]['product_id']}}"> </button>
+				</div>
+				@php $ordinal++ @endphp
+				@endforeach
+
+
 
 
 			</div>
@@ -23,10 +39,10 @@
 			</div>
 			<div class="sum-info">
 				<div class="goods">
-					Товары: 
+					Товары: {{ $res['total_count']}}
 				</div>
 				<div class="goods__price">
-					<b> &#8381; </b>
+					<b> {{$res['total_price']}} &#8381; </b>
 				</div>
 			</div>
 			<div class="sumbtn">

@@ -11,6 +11,8 @@ class CartController extends Controller
 {
    public function addToCart($id)
    {
+      //Добавление в массив
+      session()->get('in_cart', []);
       session()->push('in_cart', $id);
 
       //Выбор id секции и id товара
@@ -39,40 +41,59 @@ class CartController extends Controller
    {
 
       //Общее количество
-      $total_count = count(session('in_cart')->get());
+      $total_count = count(session()->get('in_cart', []));
 
       //Общая цена
-      $total_price = session('total_price')->get();
+      $total_price = session()->get('total_price', 0);
+
+
 
       //Товары в корзине
-      $ids = session('in_cart')->get();
-      foreach ($ids as $id) {
+      $cart_products = $cart_products ?? [];
+      $image_path = $image_path ?? '';
 
-         //Выбор id секции и id товара
-         $reg = '/\d+/';
-         preg_match_all($reg, $id, $arr);
+      
+      if ($total_count != 0) {
+         $ids = session()->get('in_cart', []);
+         foreach ($ids as $id) {
 
-         $section_id = $arr[0][0];
-         $product_id = $arr[0][1];
+            //Выбор id секции и id товара
+            $reg = '/\d+/';
+            preg_match_all($reg, $id, $arr);
 
-         //Выбор названия таблицы для запроса в базу данных
-         if ($section_id == 1) {
-            $cart_product = ConsolesProduct::where('product_id', '=', $product_id)->get();
+            $section_id = $arr[0][0];
+            $product_id = $arr[0][1];
+
+            //Выбор названия таблицы для запроса в базу данных
+            if ($section_id == 1) {
+               $cart_product = ConsolesProduct::where('product_id', '=', $product_id)->get();
+               $image_path='consoles';
+            }
+            if ($section_id == 2) {
+               $cart_product = GamesProduct::where('product_id', '=', $product_id)->get();
+               $image_path='games';
+            }
+
+            //Log::info($cart_product);
+            $cart_products[]=$cart_product->toArray();
+
+
+
+
          }
-         if ($section_id == 2) {
-            $cart_product = GamesProduct::where('product_id', '=', $product_id)->get();
-         }
-
-         $cart_products=array_push($cart_product);
-
+         //Log::info($cart_products);
+         
       }
+      
 
+      $res = ['total_count' => $total_count, 'total_price' => $total_price, 'image_path'=>$image_path, 'cart_products' => $cart_products];
 
-      $res=['total_count'=>$total_count,'total_price'=>$total_price,'cart_products'=>$cart_products];
+      //$res = json_encode($res);
 
-      $res=json_encode($res);
+      Log::info($res);
 
-      return $res;
+      //view('cart')->render();
 
+      return view('cart')->with('res',$res);
    }
 }

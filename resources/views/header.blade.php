@@ -51,7 +51,7 @@
 						</svg>
 					</a>
 					<a class="header__contacts contacts__phone" href="tel:343342">343-342</a>
-					<a href="http://retrogame3/cart" class="header__contacts icon__bag header-btn" href=""><svg width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<a href="http://retrogame3/cart" class="header__contacts icon__bag header-btn"><svg width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M24.9925 25.9617L23.1956 6.56767C23.1581 6.15808 22.7987 5.8491 22.372 5.8491H18.6433C18.6134 2.61557 15.8655 0 12.4963 0C9.12698 0 6.37916 2.61557 6.34921 5.8491H2.62055C2.19377 5.8491 1.83438 6.16527 1.79695 6.56767L0 25.9617C0 25.9832 0 26.0048 0 26.0335C0 28.218 2.08895 30 4.66457 30H20.3354C22.9036 30 25 28.2252 25 26.0335C25 26.0048 25 25.9832 24.9925 25.9617ZM12.5037 1.58084C14.9671 1.58084 16.9736 3.49222 17.0036 5.8491H7.99641C8.02636 3.49222 10.0329 1.58084 12.5037 1.58084ZM20.3354 28.412H4.66457C3.01737 28.412 1.66966 27.3629 1.6472 26.0623L3.36927 7.42994H6.34172V9.98802C6.34172 10.4263 6.7086 10.7784 7.16532 10.7784C7.62204 10.7784 7.98892 10.4263 7.98892 9.98802V7.42994H16.9961V9.98802C16.9961 10.4263 17.363 10.7784 17.8197 10.7784C18.2764 10.7784 18.6433 10.4263 18.6433 9.98802V7.42994H21.6158L23.3378 26.0623C23.3303 27.3629 21.9826 28.412 20.3354 28.412Z" fill="#454545" />
 						</svg></a>
 					<a href="http://retrogame3/account" class="header__contacts icon__pr header-btn" href="private__cab.html"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
