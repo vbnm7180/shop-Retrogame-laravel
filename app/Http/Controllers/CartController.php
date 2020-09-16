@@ -11,9 +11,10 @@ class CartController extends Controller
 {
    public function addToCart($id)
    {
+      //
       //Добавление в массив
       session()->get('in_cart', []);
-      session()->push('in_cart', $id);
+      
 
       //Выбор id секции и id товара
       $reg = '/\d+/';
@@ -24,13 +25,15 @@ class CartController extends Controller
 
       //Выбор названия таблицы для запроса в базу данных
       if ($section_id == 1) {
-         $product_price = ConsolesProduct::where('product_id', '=', $product_id)->value('price');
+         $product = ConsolesProduct::where('product_id', '=', $product_id)->get();
+         session()->push('in_cart', ['id'=>$id,'image_folder'=>'consoles','image'=>$product['image'],'name'=>$product['name'],'price'=>$product['price']]);
       }
       if ($section_id == 2) {
-         $product_price = GamesProduct::where('product_id', '=', $product_id)->value('price');
+         $product = GamesProduct::where('product_id', '=', $product_id)->value('price');
+         session()->push('in_cart', ['id'=>$id,'image_folder'=>'games','image'=>$product['image'],'name'=>$product['name'],'price'=>$product['price']]);
       }
 
-      $total_price = session()->get('total_price', 0) + $product_price;
+      $total_price = session()->get('total_price', 0) + $product['price'];
 
       session()->put('total_price', $total_price);
 
@@ -51,7 +54,7 @@ class CartController extends Controller
          $session_array = array_values($session_array);
          session()->put('in_cart', $session_array);
 
-         
+
       }
    }
 
@@ -68,8 +71,6 @@ class CartController extends Controller
 
       //Товары в корзине
       $cart_products = $cart_products ?? [];
-      $image_path = $image_path ?? '';
-
 
       if ($total_count != 0) {
          $ids = session()->get('in_cart', []);
