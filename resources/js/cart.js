@@ -45,9 +45,21 @@ $('body').on('click', '.del-cart',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            success: function() {
+            success: function(data) {
+
+                //Если в корзине нет товаров, вывести текст
+                if (data.total_count == 0) {
+                    $('.bucket__content-cards').text('Корзина пуста');
+                }
+
                 //Удаление строки товара из корзины
                 $(e.target).parent().remove();
+
+                //Изменение вывод измененного числа товаров и цены
+                let total_count = 'Товары: ' + data.total_count;
+                $('.goods').text(total_count);
+                let price = '<b>' + data.total_price + '&#8381;</b>';
+                $('.goods__price').html(price);
 
             }
         });

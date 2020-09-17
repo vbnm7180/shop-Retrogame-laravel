@@ -45,8 +45,7 @@ class CartController extends Controller
    {
       $session_array = session()->get('in_cart');
 
-      $index = 0;
-      foreach ($session_array as $product) {
+      foreach ($session_array as $index => $product) {
          if ($product['id'] == $id) {
             unset($session_array[$index]);
             //Переиндексирование
@@ -56,9 +55,13 @@ class CartController extends Controller
             $total_price = session()->get('total_price', 0) - $product['price'];
             session()->put('total_price', $total_price);
          }
-         $index++;
       }
 
+      $res=['total_count'=>count(session()->get('in_cart')),'total_price'=>$total_price];
+
+      $res=json_encode($res);
+
+      return $res;
       
    }
 
