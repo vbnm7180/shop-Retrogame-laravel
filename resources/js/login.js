@@ -19,7 +19,7 @@ $('#signin-form').on('submit',
             },
             statusCode: {
                 422: function(data) {
-                    console.log(data.responseJSON.errors);
+                    console.log(data);
                 }
             }
         });
