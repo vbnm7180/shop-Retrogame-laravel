@@ -9,22 +9,21 @@ $('#signin-form').on('submit',
         let formData = $(this).serialize();
 
         //Вход в личный кабинет, либо выдача ошибки
-        $.getJSON('/controllers/loginController.php', formData, function(success) {
-
-            if (success.login == 0) {
-                $('.signin__email').text('Неверный Email');
-                $('.signin__email').css('color', '#DF2121');
-                $('.signin__email').next().css('border-color', '#DF2121');
-            }
-            if (success.password == 0) {
-                $('.signin__passw').text('Неверный пароль');
-                $('.signin__passw').css('color', '#DF2121');
-                $('.signin__passw').next().css('border-color', '#DF2121');
-            }
-            if (success.login == 1 && success.password == 1) {
-                window.location.href = "/controllers/pageController.php?page_id=user-area";
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            url: '/login-valid',
+            data: formData,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            statusCode: {
+                422: function(data) {
+                    console.log(data.responseJSON.errors);
+                }
             }
         });
+
     }
 );
 

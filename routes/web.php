@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
 use App\Models\GamesProduct;
 
 /*
@@ -32,12 +33,8 @@ Route::get('/cart',function(){
     return view('cart');
 });
 
-Route::get('/account', function () {
-    if ($_SESSION['login'] == "" && $_SESSION['password'] == "") {
-        return view('login');
-    } else {
-        return view('account');
-    }
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
@@ -47,3 +44,5 @@ Route::get('/consoles/{id}', [ ProductsController::class, 'showConsoles' ]);
 Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);
 
 Route::post('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);
+
+Route::get('/login-valid', [ LoginController::class, 'login' ]);

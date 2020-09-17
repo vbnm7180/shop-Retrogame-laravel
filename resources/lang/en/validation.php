@@ -130,8 +130,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'login' => [
+            'required' => 'Заполните это поле',
+            'email' => 'Введите действительный Email',
+            'exists' => 'Неверный Email'
+        ],
+        'password' => [
+            'required' => 'Заполните это поле',
+            'check_password' => 'Неверный пароль',
         ],
     ],
 
