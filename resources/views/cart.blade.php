@@ -14,16 +14,16 @@
 			</div>
 			<div class="bucket__content-cards">
 				@php $ordinal=1 @endphp
-				@foreach($res['cart_products'] as $product)
+				@foreach(session()->get('in_cart',[]) as $product)
 				<div class="bucket__product__card">
 					<div class="card__number">
 						{{ $ordinal}} .
 					</div>
-					<div class="card-img"><img src="/images/{{$res['image_path']}}/{{$product[0]['image']}}" alt="\"></div>
-					<div class="name_product">{{$product[0]['name']}}</div>
+					<div class="card-img"><img src="/images/{{$product['image_folder']}}/{{$product['image']}}" alt="\"></div>
+					<div class="name_product">{{$product['name']}}</div>
 					<div class="numberOf">1шт</div>
-					<div class="card-price">{{$product[0]['price']}}&#8381; </div>
-					<button class="btn-bucket del-cart" type="button" id="del_{{$product[0]['section_id']}}-{{$product[0]['product_id']}}"> </button>
+					<div class="card-price">{{$product['price']}}&#8381; </div>
+					<button class="btn-bucket del-cart" type="button" id="del_{{$product['id']}}"> </button>
 				</div>
 				@php $ordinal++ @endphp
 				@endforeach
@@ -39,10 +39,10 @@
 			</div>
 			<div class="sum-info">
 				<div class="goods">
-					Товары: {{ $res['total_count']}}
+					Товары: {{ count(session()->get('in_cart',[]))}}
 				</div>
 				<div class="goods__price">
-					<b> {{$res['total_price']}} &#8381; </b>
+					<b> {{session()->get('total_price',0)}} &#8381; </b>
 				</div>
 			</div>
 			<div class="sumbtn">

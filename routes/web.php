@@ -28,7 +28,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/cart', [ CartController::class, 'showCart' ]);
+Route::get('/cart',function(){
+    return view('cart');
+});
 
 Route::get('/account', function () {
     if ($_SESSION['login'] == "" && $_SESSION['password'] == "") {

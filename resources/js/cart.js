@@ -33,9 +33,11 @@ $('body').on('click', '.del-cart',
         let reg = /(\d+-\d+)/;
         let del_prod = e.target.id.match(reg);
 
+
+
         //Удаление товара из массива корзины, вычисление общей цены
         let data = del_prod[0];
-
+        console.log(data);
         $.ajax({
             method: 'POST',
             dataType: 'json',
@@ -44,10 +46,13 @@ $('body').on('click', '.del-cart',
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function() {
+                //Удаление строки товара из корзины
+                $(e.target).parent().remove();
 
             }
         });
 
+        /*
         $.getJSON('/controllers/deleteFromCartController.php', data, function(res) {
 
             //Если в корзине нет товаров, вывести текст
@@ -64,6 +69,7 @@ $('body').on('click', '.del-cart',
             let price = '<b>' + res.price + '&#8381;</b>';
             $('.goods__price').html(price);
         });
+        */
     }
 );
 
