@@ -9,6 +9,26 @@ $('#signup-form').on('submit',
         let formData = $(this).serialize();
 
         //Регистрация, либо выдача сообщения об ошибке
+
+
+        $.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: '/reg-valid',
+            data: formData,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: {
+                function(data) {
+                    console.log(data);
+                }
+            }
+
+
+        });
+
+        /*
         $.getJSON('/controllers/registerController.php', formData, function(data) {
 
             if (data.login == 0) {
@@ -25,6 +45,8 @@ $('#signup-form').on('submit',
                 window.location.href = "/controllers/pageController.php?page_id=account";
             }
         });
+        */
+
     }
 );
 

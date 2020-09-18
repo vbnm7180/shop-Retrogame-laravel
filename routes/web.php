@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Models\GamesProduct;
 
 /*
@@ -46,3 +47,5 @@ Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);
 Route::post('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);
 
 Route::get('/login-valid', [ LoginController::class, 'login' ]);
+
+Route::get('/reg-valid', [ RegisterController::class, 'register' ]);

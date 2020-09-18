@@ -16,7 +16,7 @@
 	<label for="" class="signup__label">Фио</label>
 	<input name="name" type="text" class="signup__input">
 	<label for="" class="signup__label signup__email">Ваш Email</label>
-	<input name="login" type="email" class="signup__input email__input">
+	<input name="email" type="email" class="signup__input email__input">
 	<label for="" class="signup__label signup__passw">Введите пароль</label>
 	<input name="password" type="password" class="signup__input password__input">
 	<label for="" class="signup__label signup__passw">Повторите пароль</label>
