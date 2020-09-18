@@ -6,6 +6,7 @@ use App\Models\ConsolesProduct;
 use App\Models\GamesProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -39,6 +40,7 @@ class CartController extends Controller
       session()->put('total_price', $total_price);
 
       //Log::info(session()->get('in_cart'));
+      //Log::info(Auth::user()->city);
    }
 
    public function deleteFromCart($id)
@@ -67,5 +69,29 @@ class CartController extends Controller
 
    public function showCart()
    {
+      if(Auth::check()){
+         $res=[
+            'city'=>Auth::user()->city,
+            'street'=>Auth::user()->city,
+            'postcode'=>Auth::user()->postcode,
+            'name'=>Auth::user()->name,
+            'phone'=>Auth::user()->phone,
+            'email'=>Auth::user()->email,
+         ];
+         return view('cart')->with('res',$res);
+
+      }
+      else{
+         $res=[
+            'city'=>'',
+            'street'=>'',
+            'postcode'=>'',
+            'name'=>'',
+            'phone'=>'',
+            'email'=>'',
+         ];
+         return view('cart')->with('res',$res);
+
+      }
    }
 }

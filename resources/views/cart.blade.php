@@ -53,6 +53,21 @@
 
 	<div class="row__wraper row__wraper-2">
 
+	<form class="bucket__form" id="bucket-form">
+			<div class="bucket__form-wraper">
+				<label for="">Адрес доставки</label>
+				<input type="text" class="bucket__input" placeholder="Город" name="city" value="{{$res['city']}}">
+				<input type="text" class="bucket__input" placeholder="Улица/Квартира/Дом\" name="street" value="{{$res['street']}}">
+				<input type="text" class="bucket__input" placeholder="Индекс" name="postcode" value="{{$res['postcode']}}">
+			</div>
+			<div class="bucket__form-wraper bucket__form-wraper-2\">
+				<label for="">Личная информация</label>
+				<input type="text" class="bucket__input" placeholder="ФИО" name="name" value="{{$res['name']}}">
+				<input type="text" class="bucket__input" placeholder="Номер телефона" name="phone" value="{{$res['phone']}}">
+				<input type="text" class="bucket__input" placeholder="Электронная почта" name="email" value="{{$res['email']}}">
+			</div>
+	</form>
+
 		<div class="bucket__helper">Остались вопросы? <br><span class="vk__span">Напишите нам <a href="#"> Вконтакте</a></span></div>
 	</div>
 

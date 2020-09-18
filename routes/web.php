@@ -31,9 +31,7 @@ Route::get('/', function () {
 })->name('main');
 
 
-Route::get('/cart',function(){
-    return view('cart');
-});
+Route::get('/cart', [ CartController::class, 'showCart' ]);
 
 Route::get('/login', function () {
     if (!Auth::check()){
