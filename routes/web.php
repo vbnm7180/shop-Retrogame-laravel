@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AccountController;
 use App\Models\GamesProduct;
 
 /*
@@ -38,13 +39,13 @@ Route::get('/login', function () {
     return view('login');
     }
     else{
-        return view('account');
+        return redirect('/account');
     }
 });
 
-Route::get('/account', function () {
-    return view('account');
-});
+Route::get('/exit', [ AccountController::class, 'exitAccount' ]);
+
+Route::get('/account', ['middleware' => 'auth','uses' => 'App\Http\Controllers\AccountController@showAccount' ])->name('account');
 
 Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
 

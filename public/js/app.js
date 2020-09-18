@@ -12,8 +12,8 @@ $('body').on('submit', '#account-form',
 //Кнопка Выйти из личного кабинета
 $('.logout-btn').on('click',
     function() {
-        $.get('/controllers/exitAccountController.php', function() {
-            window.location.href = "/controllers/pageController.php?page_id=user-area";
+        $.get('/exit', function() {
+            window.location.pathname = "/login";
         });
     }
 );
