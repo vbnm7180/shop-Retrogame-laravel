@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return view('main');
-});
+})->name('main');
 
 
 Route::get('/cart',function(){
@@ -48,4 +48,4 @@ Route::post('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);
 
 Route::get('/login-valid', [ LoginController::class, 'login' ]);
 
-Route::get('/reg-valid', [ RegisterController::class, 'register' ]);
+Route::post('/reg-valid', [ RegisterController::class, 'register' ]);

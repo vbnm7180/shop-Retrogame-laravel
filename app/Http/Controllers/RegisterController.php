@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 
 class RegisterController extends Controller
@@ -28,7 +29,8 @@ class RegisterController extends Controller
         ], $messages);
 
         if($validator->fails()){
-            return response()->json($validator->errors());
+            Log::info($validator->errors());
+            return response()->json($validator->errors(),422);
         }
 
         $hash_password=Hash::make($input->get('password'));
@@ -38,6 +40,8 @@ class RegisterController extends Controller
             'email'=>$input->get('email'),
             'password'=>$hash_password,
         ]);
+
+        return response()->make('',200);
 
     } 
 }

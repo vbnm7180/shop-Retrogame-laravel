@@ -621,10 +621,25 @@ $('#signup-form').on('submit',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            success: {
-                function(data) {
-                    console.log(data);
+            statusCode: {
+                422: function(data) {
+                    console.log(data.responseJSON.email);
+                    if (data.responseJSON.email != null) {
+                        $('.signup__email').text(data.responseJSON.email);
+                        $('.signup__email').css('color', '#DF2121');
+                        $('.signup__email').next().css('border-color', '#DF2121');
+                    }
+                    if (data.responseJSON.password_rep != null) {
+                        $('.signup__passw').text(data.responseJSON.password_rep);
+                        $('.signup__passw').css('color', '#DF2121');
+                        $('.signup__passw').next().css('border-color', '#DF2121');
+                    }
+
+                },
+                200: function() {
+                    window.location.pathname = "/";
                 }
+
             }
 
 
