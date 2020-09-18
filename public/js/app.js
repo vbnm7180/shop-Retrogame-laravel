@@ -505,7 +505,21 @@ $('#signin-form').on('submit',
             },
             statusCode: {
                 422: function(data) {
-                    console.log(data);
+                    console.log(data.responseJSON.email);
+                    if (data.responseJSON.email != null) {
+                        $('.signin__email').text(data.responseJSON.email);
+                        $('.signin__email').css('color', '#DF2121');
+                        $('.signin__email').next().css('border-color', '#DF2121');
+                    }
+                    if (data.responseJSON.password != null) {
+                        $('.signin__passw').text(data.responseJSON.password_rep);
+                        $('.signin__passw').css('color', '#DF2121');
+                        $('.signin__passw').next().css('border-color', '#DF2121');
+                    }
+
+                },
+                200: function() {
+                    window.location.pathname = "/account";
                 }
             }
         });
@@ -629,10 +643,15 @@ $('#signup-form').on('submit',
                         $('.signup__email').css('color', '#DF2121');
                         $('.signup__email').next().css('border-color', '#DF2121');
                     }
+                    if (data.responseJSON.password != null) {
+                        $('.signup__passw1').text(data.responseJSON.password_rep);
+                        $('.signup__passw1').css('color', '#DF2121');
+                        $('.signup__passw1').next().css('border-color', '#DF2121');
+                    }
                     if (data.responseJSON.password_rep != null) {
-                        $('.signup__passw').text(data.responseJSON.password_rep);
-                        $('.signup__passw').css('color', '#DF2121');
-                        $('.signup__passw').next().css('border-color', '#DF2121');
+                        $('.signup__passw2').text(data.responseJSON.password_rep);
+                        $('.signup__passw2').css('color', '#DF2121');
+                        $('.signup__passw2').next().css('border-color', '#DF2121');
                     }
 
                 },

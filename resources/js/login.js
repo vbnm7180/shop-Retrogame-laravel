@@ -20,6 +20,20 @@ $('#signin-form').on('submit',
             statusCode: {
                 422: function(data) {
                     console.log(data);
+                    if (data.responseJSON.email != null) {
+                        $('.signin__email').text(data.responseJSON.email);
+                        $('.signin__email').css('color', '#DF2121');
+                        $('.signin__email').next().css('border-color', '#DF2121');
+                    }
+                    if (data.responseJSON.password != null) {
+                        $('.signin__passw').text(data.responseJSON.password_rep);
+                        $('.signin__passw').css('color', '#DF2121');
+                        $('.signin__passw').next().css('border-color', '#DF2121');
+                    }
+
+                },
+                200: function() {
+                    window.location.pathname = "/account";
                 }
             }
         });
