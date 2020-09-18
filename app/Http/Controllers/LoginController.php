@@ -27,28 +27,19 @@ class LoginController extends Controller
         ], $messages);
 
         if($validator->fails()){
-            Log::info($validator->errors());
+            //Log::info($validator->errors());
             return response()->json($validator->errors(),422);
         }
 
         if(!Auth::attempt($input->all())){
-            return response()->json(['responseJSON'=>[
-                'password'=>'Неверный пароль'
-            ]],422);
+            
+            //$answ=['responseJSON'=>['password'=>'Неверный пароль']];
+            //Log::info(json_encode($answ));
+            return response()->json(['password'=>'Неверный пароль'],422);
         }
         else{
             return response()->make('',200);
         }
-
-        $hash_password=Hash::make($input->get('password'));
-
-        User::create([
-            'name'=>$input->get('name'),
-            'email'=>$input->get('email'),
-            'password'=>$hash_password,
-        ]);
-
-        return response()->make('',200);
 
     }
 }

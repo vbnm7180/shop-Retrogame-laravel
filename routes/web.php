@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
@@ -35,7 +36,16 @@ Route::get('/cart',function(){
 });
 
 Route::get('/login', function () {
+    if (!Auth::check()){
     return view('login');
+    }
+    else{
+        return view('account');
+    }
+});
+
+Route::get('/account', function () {
+    return view('account');
 });
 
 Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
