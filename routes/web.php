@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OrdersController;
 use App\Models\GamesProduct;
 
 /*
@@ -46,6 +47,8 @@ Route::get('/login', function () {
 Route::get('/exit', [ AccountController::class, 'exitAccount' ]);
 
 Route::get('/update', [ AccountController::class, 'updateAccount' ]);
+
+Route::get('/make-order', [ OrdersController::class, 'makeOrder' ]);
 
 Route::get('/account', ['middleware' => 'auth','uses' => 'App\Http\Controllers\AccountController@showAccount' ])->name('account');
 
