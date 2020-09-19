@@ -45,6 +45,8 @@ Route::get('/login', function () {
 
 Route::get('/exit', [ AccountController::class, 'exitAccount' ]);
 
+Route::get('/update', [ AccountController::class, 'updateAccount' ]);
+
 Route::get('/account', ['middleware' => 'auth','uses' => 'App\Http\Controllers\AccountController@showAccount' ])->name('account');
 
 Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);

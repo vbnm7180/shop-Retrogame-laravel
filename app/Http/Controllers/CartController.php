@@ -72,7 +72,7 @@ class CartController extends Controller
       if(Auth::check()){
          $res=[
             'city'=>Auth::user()->city,
-            'street'=>Auth::user()->city,
+            'street'=>Auth::user()->street,
             'postcode'=>Auth::user()->postcode,
             'name'=>Auth::user()->name,
             'phone'=>Auth::user()->phone,

@@ -5,7 +5,7 @@ $('body').on('submit', '#account-form',
         //Получение данных формы
         let formData = $(this).serialize();
         //Изменение данных личного кабинета в базе данных
-        $.get('/models/accountUpdateFormModel.php', formData);
+        $.get('/update', formData);
     }
 );
 
