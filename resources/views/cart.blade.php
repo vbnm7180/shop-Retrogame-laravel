@@ -13,7 +13,11 @@
 				</div>
 			</div>
 			<div class="bucket__content-cards">
-				@php $ordinal=1 @endphp
+			{{--Вывод карточек товара--}}
+
+				@php 
+				//Номер карточки
+				$ordinal=1 @endphp
 				@foreach(session()->get('in_cart',[]) as $product)
 				<div class="bucket__product__card">
 					<div class="card__number">
@@ -27,10 +31,7 @@
 				</div>
 				@php $ordinal++ @endphp
 				@endforeach
-
-
-
-
+				
 			</div>
 		</div>
 		<div class="bucket__final__sum">

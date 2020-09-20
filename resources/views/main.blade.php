@@ -29,10 +29,6 @@
 
 	</div>
 
-
-
-
-
 	<section class="console">
 		<div class="container__console">
 			<div class="head__console">

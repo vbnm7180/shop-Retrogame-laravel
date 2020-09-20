@@ -27,15 +27,17 @@
 			<div class="orders__title">Мои заказы <form action=""></form>
 			</div>
 
+            {{--Вывод заказов--}}
 			@foreach($res['orders'] as $order)
 
 			@php
-			//Вывод номера заказа и дополнение его нулями слева
+			//Номера заказа и дополнение его нулями слева
 			$order_number = str_pad($order['order_number'], 7, "0", STR_PAD_LEFT);
 
-			//Вывод даты заказа
+			//Дата заказа
 			$date = date('d.m.Y', strtotime($order['order_date']));
 
+            //Цена товаров в заказе
 			$total = $order['total_price'];
 
 			//Счетчик для строки товара в заказе
@@ -48,6 +50,8 @@
 				</div>
 				<div class="orders__content">
 
+                    {{--Вывод строк товаров в закзе--}}
+
 					@foreach($order['products_info'] as $product)
 
 					<div class="order">{{$count}}. {{$product['section_name']}} {{$product['product_name']}} <span>{{$product['price']}} р</span> </div>
@@ -55,6 +59,7 @@
 					@php
 					$count++;
 					@endphp
+					
 					@endforeach
 
 					<div class="orders__price">
