@@ -5,7 +5,15 @@ $('body').on('submit', '#account-form',
         //Получение данных формы
         let formData = $(this).serialize();
         //Изменение данных личного кабинета в базе данных
-        $.get('/update', formData);
+        //$.get('/update', formData);
+        $.ajax({
+            method: 'PUT',
+            data: formData,
+            url: '/update',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     }
 );
 
@@ -400,14 +408,11 @@ $('body').on('click', '.del-cart',
         //Получение id товара
         let reg = /(\d+-\d+)/;
         let del_prod = e.target.id.match(reg);
-
-
-
-        //Удаление товара из массива корзины, вычисление общей цены
         let data = del_prod[0];
-        console.log(data);
+
+        //Удаление товара из массива корзины
         $.ajax({
-            method: 'POST',
+            method: 'DELETE',
             dataType: 'json',
             url: '/del-cart/' + data,
             headers: {
@@ -431,35 +436,18 @@ $('body').on('click', '.del-cart',
 
             }
         });
-
-        /*
-        $.getJSON('/controllers/deleteFromCartController.php', data, function(res) {
-
-            //Если в корзине нет товаров, вывести текст
-            if (res.count == 0) {
-                $('.bucket__content-cards').text('Корзина пуста');
-            }
-
-            //Удаление строки товара из корзины
-            $(e.target).parent().remove();
-
-            //Изменение вывод измененного числа товаров и цены
-            let count = 'Товары: ' + res.count;
-            $('.goods').text(count);
-            let price = '<b>' + res.price + '&#8381;</b>';
-            $('.goods__price').html(price);
-        });
-        */
     }
 );
 
 //Кнопка Перейти в корзину
-
+/*
 $('body').on('click', '.go-cart',
     function() {
         window.location.href = "/controllers/pageController.php?page_id=cart";
     }
 );
+*/
+//Кнопки перехода на разделы главной страницы из дочерних страниц
 $('.nav__sega').on('click', function(e) {
     if (window.location.pathname != '/') {
         e.preventDefault();
@@ -504,6 +492,7 @@ $('#signin-form').on('submit',
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             statusCode: {
+                //Вывод ошибки на экран
                 422: function(data) {
                     console.log(data);
                     if (data.responseJSON.email != null) {
@@ -518,6 +507,7 @@ $('#signin-form').on('submit',
                     }
 
                 },
+                //Переход в личный кабинет, если аутентификация успешна
                 200: function() {
                     window.location.pathname = "/account";
                 }
@@ -547,8 +537,19 @@ $('.password__input').on('input',
 //Кнопка Оформить заказ
 $('.sum-btn').on("click", function() {
     let formData = $('#bucket-form').serialize();
-    $.get('/make-order', formData, function() {
-        window.location.pathname = "/";
+    $.ajax({
+        method: 'PUT',
+        data: formData,
+        url: '/make-order',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        statusCode: {
+            200: function() {
+                window.location.pathname = "/";
+            }
+        }
+
     });
 });
 //Вывод карточек товаров с игровыми приставками в модальное окно
@@ -559,12 +560,7 @@ $(".card__btn").on("click",
         //Получение id категории товара
         let data = e.target.id;
 
-
-
-
-
         //Загрузка товаров в модальное окно из базы данных
-
         $.getJSON('/consoles/' + data, function(console) {
             let content = '';
             $.each(console, function() {
@@ -605,7 +601,6 @@ $(".game-btn").on("click",
         let data = e.target.id
 
         //Загрузка карточек товаров с играми на главную страницу
-
         $.getJSON('/games/' + data, function(game) {
             let content = '';
             $.each(game, function() {
@@ -625,8 +620,6 @@ $('#signup-form').on('submit',
         let formData = $(this).serialize();
 
         //Регистрация, либо выдача сообщения об ошибке
-
-
         $.ajax({
             method: 'POST',
             dataType: 'json',
@@ -636,6 +629,7 @@ $('#signup-form').on('submit',
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             statusCode: {
+                //Вывод ошибки на экран
                 422: function(data) {
                     console.log(data.responseJSON.email);
                     if (data.responseJSON.email != null) {
@@ -655,33 +649,14 @@ $('#signup-form').on('submit',
                     }
 
                 },
+                //Переход в личный кабинет, если аутентификация успешна
                 200: function() {
                     window.location.pathname = "/";
                 }
 
             }
 
-
         });
-
-        /*
-        $.getJSON('/controllers/registerController.php', formData, function(data) {
-
-            if (data.login == 0) {
-                $('.signup__email').text('Такой Email уже зарегистрирован');
-                $('.signup__email').css('color', '#DF2121');
-                $('.signup__email').next().css('border-color', '#DF2121');
-            }
-            if (data.password == 0) {
-                $('.signup__passw').text('Пароли не совпадают');
-                $('.signup__passw').css('color', '#DF2121');
-                $('.signup__passw').next().css('border-color', '#DF2121');
-            }
-            if (data.login == 1 && data.password == 1) {
-                window.location.href = "/controllers/pageController.php?page_id=account";
-            }
-        });
-        */
 
     }
 );
