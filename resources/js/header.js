@@ -1,3 +1,4 @@
+//Кнопки перехода на разделы главной страницы из дочерних страниц
 $('.nav__sega').on('click', function(e) {
     if (window.location.pathname != '/') {
         e.preventDefault();

@@ -21,20 +21,30 @@ use App\Models\GamesProduct;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
-
+//Главная страница
 Route::get('/', function () {
     return view('main');
 })->name('main');
 
+//Показать карточки товаров с играми
+Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
 
+//Показать карточки товаров с консолями
+Route::get('/consoles/{id}', [ ProductsController::class, 'showConsoles' ]);
+
+//Корзина
 Route::get('/cart', [ CartController::class, 'showCart' ]);
 
+//Добавить в корзину
+Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);
+
+//Удалить из корзины
+Route::delete('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);
+
+//Оформить заказ
+Route::put('/make-order', [ OrdersController::class, 'makeOrder' ]);
+
+//Форма входа/личный кабинет
 Route::get('/login', function () {
     if (!Auth::check()){
     return view('login');
@@ -44,22 +54,22 @@ Route::get('/login', function () {
     }
 });
 
-Route::get('/exit', [ AccountController::class, 'exitAccount' ]);
-
-Route::get('/update', [ AccountController::class, 'updateAccount' ]);
-
-Route::get('/make-order', [ OrdersController::class, 'makeOrder' ]);
-
+//Личный кабинет
 Route::get('/account', ['middleware' => 'auth','uses' => 'App\Http\Controllers\AccountController@showAccount' ])->name('account');
 
-Route::get('/games/{id}', [ ProductsController::class, 'showGames' ]);
+//Выход из личного кабинета
+Route::get('/exit', [ AccountController::class, 'exitAccount' ]);
 
-Route::get('/consoles/{id}', [ ProductsController::class, 'showConsoles' ]);
+//Обновить информацию в личном кабинете
+Route::put('/update', [ AccountController::class, 'updateAccount' ]);
 
-Route::post('/add-cart/{id}', [ CartController::class, 'addToCart' ]);
-
-Route::post('/del-cart/{id}', [ CartController::class, 'deleteFromCart' ]);
-
+//Проверить данные для входа
 Route::get('/login-valid', [ LoginController::class, 'login' ]);
 
+//Проверить данные для регистрации
 Route::post('/reg-valid', [ RegisterController::class, 'register' ]);
+
+
+
+
+

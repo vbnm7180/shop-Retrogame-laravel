@@ -18,6 +18,7 @@ $('#signin-form').on('submit',
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             statusCode: {
+                //Вывод ошибки на экран
                 422: function(data) {
                     console.log(data);
                     if (data.responseJSON.email != null) {
@@ -32,6 +33,7 @@ $('#signin-form').on('submit',
                     }
 
                 },
+                //Переход в личный кабинет, если аутентификация успешна
                 200: function() {
                     window.location.pathname = "/account";
                 }

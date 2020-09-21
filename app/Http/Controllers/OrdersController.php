@@ -10,17 +10,24 @@ use App\Models\Order;
 
 class OrdersController extends Controller
 {
+    //Оформление заказа
     public function makeOrder(Request $input){
 
+        //Вычисление номера для следующего заказа
         $max_order = Order::max('order_number');
         $order_number=$max_order+1;
+        
+        //Создание строки из id товаров в корзине
         $products=session()->get('in_cart');
-        Log::info($products);
         foreach($products as $product){
             $products_ids[]=$product['id'];
         }
         $products=implode(', ', $products_ids);
+
+        //Запись текущей даты
         $date=Carbon::now()->format('Y-m-d');
+
+        //Отправка свдений о заказе в базу данных
         Order::create([
             'order_number'=>$order_number,
             'products'=>$products,
@@ -34,7 +41,5 @@ class OrdersController extends Controller
             'order_date'=>$date,
 
         ]);
-
     }
-
 }

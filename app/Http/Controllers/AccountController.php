@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,14 +11,20 @@ use App\Models\ConsolesProduct;
 
 class AccountController extends Controller
 {
+    //Открытие личного кабинета
     public function showAccount(){
 
+        //Выбор заказов пользователя из базы данных
         $orders=Order::where('email','=',Auth::user()->email)->get()->toArray();
 
+        //Для каждого заказа
         foreach ($orders as &$order){
-            //Преобразование перенчня товаров в массив
+
+            //Преобразование перечня товаров в заказе в массив
             $ids = explode(', ', $order['products']);
+
             foreach ($ids as $count=>$id){
+
                 	//Выбор id секции и id товара
 					$reg = '/\d+/';
 					preg_match_all($reg, $id, $arr);
@@ -27,13 +32,12 @@ class AccountController extends Controller
 					$section_id = $arr[0][0];
 					$product_id = $arr[0][1];
 
-					//Выбор таблицы для запроса к бд и секции товара
+					//Выбор информации о товаре из соответсвующей таблицы
 					if ($section_id == 1) {
                         $product = ConsolesProduct::where('product_id', '=', $product_id)->get()->toArray();
                         $products_info['product_name']=$product[0]['name'];
                         $products_info['price']=$product[0]['price'];
                         $products_info['section_name']='Игровая консоль';
-
 					}
 					if ($section_id == 2) {
                         $product = GamesProduct::where('product_id', '=', $product_id)->get()->toArray();
@@ -41,17 +45,15 @@ class AccountController extends Controller
                         $products_info['price']=$product[0]['price'];
                         $products_info['section_name']='Игра';
                     }
+
+                    //Занесени информации о товаре в массив
                     $order['products_info'][$count]=$products_info;
-                    
-                    
-
-
             }
         }
 
         unset($order);
-        //Log::info($orders);
 
+        //Результирующий массив
         $res=[
             'city'=>Auth::user()->city,
             'street'=>Auth::user()->street,
@@ -62,18 +64,16 @@ class AccountController extends Controller
             'orders'=>$orders
          ];
 
-         Log::info($res);
          return view('account')->with('res',$res);
     }
 
+    //Обновить информацию в личном кабинете
     public function updateAccount(Request $input){
-        //Log::info($input->all());
        User::where('id','=',Auth::user()->id)->update($input->all());
-
     }
 
+    //Выйти из личного кабинета
     public function exitAccount(){
         Auth::logout();
-        
     }
 }

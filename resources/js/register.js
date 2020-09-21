@@ -9,8 +9,6 @@ $('#signup-form').on('submit',
         let formData = $(this).serialize();
 
         //Регистрация, либо выдача сообщения об ошибке
-
-
         $.ajax({
             method: 'POST',
             dataType: 'json',
@@ -20,6 +18,7 @@ $('#signup-form').on('submit',
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             statusCode: {
+                //Вывод ошибки на экран
                 422: function(data) {
                     console.log(data.responseJSON.email);
                     if (data.responseJSON.email != null) {
@@ -39,33 +38,14 @@ $('#signup-form').on('submit',
                     }
 
                 },
+                //Переход в личный кабинет, если аутентификация успешна
                 200: function() {
                     window.location.pathname = "/";
                 }
 
             }
 
-
         });
-
-        /*
-        $.getJSON('/controllers/registerController.php', formData, function(data) {
-
-            if (data.login == 0) {
-                $('.signup__email').text('Такой Email уже зарегистрирован');
-                $('.signup__email').css('color', '#DF2121');
-                $('.signup__email').next().css('border-color', '#DF2121');
-            }
-            if (data.password == 0) {
-                $('.signup__passw').text('Пароли не совпадают');
-                $('.signup__passw').css('color', '#DF2121');
-                $('.signup__passw').next().css('border-color', '#DF2121');
-            }
-            if (data.login == 1 && data.password == 1) {
-                window.location.href = "/controllers/pageController.php?page_id=account";
-            }
-        });
-        */
 
     }
 );

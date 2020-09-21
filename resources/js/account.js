@@ -5,7 +5,15 @@ $('body').on('submit', '#account-form',
         //Получение данных формы
         let formData = $(this).serialize();
         //Изменение данных личного кабинета в базе данных
-        $.get('/update', formData);
+        //$.get('/update', formData);
+        $.ajax({
+            method: 'PUT',
+            data: formData,
+            url: '/update',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     }
 );
 

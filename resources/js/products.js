@@ -6,12 +6,7 @@ $(".card__btn").on("click",
         //Получение id категории товара
         let data = e.target.id;
 
-
-
-
-
         //Загрузка товаров в модальное окно из базы данных
-
         $.getJSON('/consoles/' + data, function(console) {
             let content = '';
             $.each(console, function() {
@@ -52,7 +47,6 @@ $(".game-btn").on("click",
         let data = e.target.id
 
         //Загрузка карточек товаров с играми на главную страницу
-
         $.getJSON('/games/' + data, function(game) {
             let content = '';
             $.each(game, function() {
