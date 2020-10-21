@@ -19,8 +19,8 @@ $('body').on('click', '.add-cart',
         });
 
         //Смена кнопки с Добавить в корзину на Перейти в корзину
-        //$(e.target).removeClass('displayblock').addClass('displaynone');
-        //$(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
+        $(e.target).removeClass('displayblock').addClass('displaynone');
+        $(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
     }
 );
 
@@ -47,16 +47,21 @@ $('body').on('click', '.del-cart',
                 //Если в корзине нет товаров, вывести текст
                 if (data.total_count == 0) {
                     $('.bucket__content-cards').text('Корзина пуста');
+                    $('.bucket__final__sum').remove();
                 }
 
                 //Удаление строки товара из корзины
                 $(e.target).parent().remove();
+
+
 
                 //Изменение вывод измененного числа товаров и цены
                 let total_count = 'Товары: ' + data.total_count;
                 $('.goods').text(total_count);
                 let price = '<b>' + data.total_price + '&#8381;</b>';
                 $('.goods__price').html(price);
+
+
 
             }
         });

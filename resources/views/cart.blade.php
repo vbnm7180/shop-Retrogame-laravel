@@ -15,6 +15,8 @@
 			<div class="bucket__content-cards">
 			{{--Вывод карточек товара--}}
 
+                @if (count(session()->get('in_cart',[]))!=0)
+
 				@php 
 				//Номер карточки
 				$ordinal=1 @endphp
@@ -31,9 +33,15 @@
 				</div>
 				@php $ordinal++ @endphp
 				@endforeach
+
+				@else
+				{{'Корзина пуста'}}
+
+				@endif
 				
 			</div>
 		</div>
+		@if (count(session()->get('in_cart',[]))!=0)
 		<div class="bucket__final__sum">
 			<div class="sum-title">
 				Итоговая стоимость
@@ -50,6 +58,7 @@
 				<button type="button" class="sum-btn">Оформить заказ</button>
 			</div>
 		</div>
+		@endif
 	</div>
 
 	<div class="row__wraper row__wraper-2">

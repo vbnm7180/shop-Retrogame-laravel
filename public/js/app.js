@@ -395,8 +395,8 @@ $('body').on('click', '.add-cart',
         });
 
         //Смена кнопки с Добавить в корзину на Перейти в корзину
-        //$(e.target).removeClass('displayblock').addClass('displaynone');
-        //$(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
+        $(e.target).removeClass('displayblock').addClass('displaynone');
+        $(e.target).next('.go-cart').removeClass('displaynone').addClass('displayblock');
     }
 );
 
@@ -423,16 +423,21 @@ $('body').on('click', '.del-cart',
                 //Если в корзине нет товаров, вывести текст
                 if (data.total_count == 0) {
                     $('.bucket__content-cards').text('Корзина пуста');
+                    $('.bucket__final__sum').remove();
                 }
 
                 //Удаление строки товара из корзины
                 $(e.target).parent().remove();
+
+
 
                 //Изменение вывод измененного числа товаров и цены
                 let total_count = 'Товары: ' + data.total_count;
                 $('.goods').text(total_count);
                 let price = '<b>' + data.total_price + '&#8381;</b>';
                 $('.goods__price').html(price);
+
+
 
             }
         });
@@ -562,8 +567,8 @@ $(".card__btn").on("click",
 
         //Загрузка товаров в модальное окно из базы данных
         $.getJSON('/consoles/' + data, function(console) {
-            console.log(console);
-            let content = '';
+
+            let content = '<div class="popup__main-text"><span class="popup__console-name">' + console[0].category_name + '</span>&nbsp;&nbsp;&nbsp;&nbsp;Товары в наличии</div>';
             $.each(console, function() {
                 content = content + '<div class="popup__card"><div class="popup__img"><img src="/images/consoles/' + this.image + '" alt="\" class="popup-img"></div><div class="popup__title"><h3>' + this.name + '</h3></div><div class="popup__text">Состояние:&nbsp;' + this.condition_rating + '<br>' + this.description + '<br> Комплект:&nbsp;' + this.bundle + '<br> Регион:&nbsp;' + this.region + '<br> Цена:&nbsp;' + this.price + ' ₽</div><button type="button" class="btn popap-btn add-cart" id="add_' + this.section_id + '-' + this.product_id + '">Добавить в Корзину</button></div>';
             });
@@ -584,9 +589,24 @@ $(window).on('load',
         //Загрузка карточек товаров с играми на главную страницу
         $.getJSON('/games/' + data, function(game) {
             let content = '';
+
             $.each(game, function() {
-                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button></div>';
+
+                if (this.cart == 0) {
+                    var display_add = ' displayblock';
+                    var display_go = ' displaynone';
+
+
+                }
+                if (this.cart == 1) {
+                    var display_add = ' displaynone';
+                    var display_go = ' displayblock';
+                }
+
+                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart' + display_add + '" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button><a href="/cart" class="btn game-btn-buy go-cart' + display_go + '">Перейти в корзину</a></div>';
+
             });
+
             $('.tabs__content').html(content);
         });
     }
@@ -605,7 +625,20 @@ $(".game-btn").on("click",
         $.getJSON('/games/' + data, function(game) {
             let content = '';
             $.each(game, function() {
-                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button></div>';
+
+                if (this.cart == 0) {
+                    var display_add = ' displayblock';
+                    var display_go = ' displaynone';
+
+
+                }
+                if (this.cart == 1) {
+                    var display_add = ' displaynone';
+                    var display_go = ' displayblock';
+                }
+
+                content = content + '<div class="game__card"><div class="game__img"><img src="/images/games/' + this.image + '" alt="" class="game-img"></div><div class="game__title">' + this.name + '</div><button class="btn game-btn-buy add-cart' + display_add + '" id="add_' + this.section_id + '-' + this.product_id + '">В корзину</button><a href="/cart" class="btn game-btn-buy go-cart' + display_go + '">Перейти в корзину</a></div>';
+
             });
             $('.tabs__content').html(content);
         });

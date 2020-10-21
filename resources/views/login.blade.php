@@ -21,10 +21,12 @@
 	<input name="password" type="password" class="signup__input password__input">
 	<label for="" class="signup__label signup__passw signup__passw2">Повторите пароль</label>
 	<input name="password_rep" type="password" class="signup__input password-rep__input">
+	<!--
 	<div class="radio__wraper">
 	<input type="radio" class="radio-btn">
 	<label for="" class="personal-data">Я даю согласие на обработку персональных данных</label>
-	</div>
+	</div> 
+	-->
 	<div class="button__wraper"><button type="submit" class="btn signin__btn reg__btn">Зарегестрироваться</button></div>
 </form>
 </div>

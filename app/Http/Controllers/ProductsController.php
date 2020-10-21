@@ -17,26 +17,47 @@ class ProductsController extends Controller
         $categ_id = $arr[1];
 
         //Выбор информации для карточек товаров из базы данных
-        $res=GamesProduct::where('category_id','=', $categ_id)->get();
+        $res = GamesProduct::where('category_id', '=', $categ_id)->get();
 
-        $res=json_encode($res);
+        foreach ($res as $product) {
+
+            $check = $product['section_id'] . '-' . $product['product_id'];
+
+            $product['cart'] = 0;
+
+            foreach (session()->get('in_cart', []) as $cart_item) {
+                if (in_array($check, $cart_item)) {
+                    $product['cart'] = 1;
+                } else {
+                    $product['cart'] = 0;
+                }
+            }
+        }
+
+        Log::info($res);
+
+        $res = json_encode($res);
+
 
         return $res;
-
     }
 
     //Показать карточки товаров с приставками
-    public function showConsoles($id){
+    public function showConsoles($id)
+    {
         $reg = '/-(\d+)/';
         preg_match($reg, $id, $arr);
         $categ_id = $arr[1];
 
         //Выбор информации для карточек товаров из базы данных
-        $res=ConsolesProduct::where('category_id','=', $categ_id)->get();
+        $res = ConsolesProduct::join('categories', 'consoles_products.category_id', '=', 'categories.category_id')->where('categories.category_id', '=', $categ_id)->get();
 
-        $res=json_encode($res);
+        $res = json_encode($res);
+
+
+
+        //Log::info($res);
 
         return $res;
-
     }
 }
