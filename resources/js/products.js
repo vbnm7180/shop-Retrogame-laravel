@@ -9,7 +9,7 @@ $(".card__btn").on("click",
         //Загрузка товаров в модальное окно из базы данных
         $.getJSON('/consoles/' + data, function(console) {
             console.log(console);
-            let content = '<div class=\"popup__main-text\"><span class=\"popup__console-name\"></span>&nbsp;&nbsp;&nbsp;&nbsp;Товары в наличии</div>';
+            let content = '';
             $.each(console, function() {
                 content = content + '<div class="popup__card"><div class="popup__img"><img src="/images/consoles/' + this.image + '" alt="\" class="popup-img"></div><div class="popup__title"><h3>' + this.name + '</h3></div><div class="popup__text">Состояние:&nbsp;' + this.condition_rating + '<br>' + this.description + '<br> Комплект:&nbsp;' + this.bundle + '<br> Регион:&nbsp;' + this.region + '<br> Цена:&nbsp;' + this.price + ' ₽</div><button type="button" class="btn popap-btn add-cart" id="add_' + this.section_id + '-' + this.product_id + '">Добавить в Корзину</button></div>';
             });
