@@ -16,11 +16,11 @@
 }
 
 .displaynone {
-    display: none;
+    display: none !important;
 }
 
 .displayblock {
-    display: block;
+    display: flex !important;
 }
 
 .popap-btn {
@@ -32,7 +32,11 @@
 }
 
 .game-btn-buy {
-    height: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px !important;
+    text-decoration: none;
 }
 
 .nav__sega,

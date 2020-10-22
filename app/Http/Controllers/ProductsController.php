@@ -28,13 +28,12 @@ class ProductsController extends Controller
             foreach (session()->get('in_cart', []) as $cart_item) {
                 if (in_array($check, $cart_item)) {
                     $product['cart'] = 1;
+                    break;
                 } else {
                     $product['cart'] = 0;
                 }
             }
         }
-
-        Log::info($res);
 
         $res = json_encode($res);
 
@@ -52,11 +51,27 @@ class ProductsController extends Controller
         //Выбор информации для карточек товаров из базы данных
         $res = ConsolesProduct::join('categories', 'consoles_products.category_id', '=', 'categories.category_id')->where('categories.category_id', '=', $categ_id)->get();
 
+        foreach ($res as $product) {
+
+            $check = $product['section_id'] . '-' . $product['product_id'];
+
+            $product['cart'] = 0;
+
+            foreach (session()->get('in_cart', []) as $cart_item) {
+
+                if (in_array($check, $cart_item)) {
+                    $product['cart'] = 1;
+                    break;
+                } else {
+                    $product['cart'] = 0;
+                }
+            }
+        }
         $res = json_encode($res);
 
 
 
-        //Log::info($res);
+
 
         return $res;
     }
