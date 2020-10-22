@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="sumbtn">
-				<button type="button" class="sum-btn">Оформить заказ</button>
+				<button type="button" class="btn sum-btn">Оформить заказ</button>
 			</div>
 		</div>
 		@endif
@@ -70,7 +70,7 @@
 				<input type="text" class="bucket__input" placeholder="Улица/Квартира/Дом\" name="street" value="{{$res['street']}}">
 				<input type="text" class="bucket__input" placeholder="Индекс" name="postcode" value="{{$res['postcode']}}">
 			</div>
-			<div class="bucket__form-wraper bucket__form-wraper-2\">
+			<div class="bucket__form-wraper bucket__form-wraper-2">
 				<label for="">Личная информация</label>
 				<input type="text" class="bucket__input" placeholder="ФИО" name="name" value="{{$res['name']}}">
 				<input type="text" class="bucket__input" placeholder="Номер телефона" name="phone" value="{{$res['phone']}}">

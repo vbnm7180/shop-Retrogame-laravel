@@ -16,7 +16,7 @@
 			<input type="text" placeholder="Улица/Дом/Квартира" class="pa__input" name="street" value="{{$res['street']}}">
 			<input type="text" placeholder="Индекс" class="pa__input" name="postcode" value="{{$res['postcode']}}">
 			<div class="btn__wraper">
-				<button type="submit" class="personal__area-btn">Сохранить</button></div>
+				<button type="submit" class="btn personal__area-btn">Сохранить</button></div>
 		</form>
 
 	</div>

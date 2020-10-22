@@ -53,7 +53,23 @@ $('.email__input').on('input',
     }
 );
 
+$('.email__input').on('click',
+    function() {
+        $(this).css('border-color', '#5E6572');
+        $(this).prev().css('color', '#5E6572');
+        $(this).prev().text('Ваш Email');
+    }
+);
+
 $('.password__input').on('input',
+    function() {
+        $(this).css('border-color', '#5E6572');
+        $(this).prev().css('color', '#5E6572');
+        $(this).prev().text('Введите пароль');
+    }
+);
+
+$('.password__input').on('click',
     function() {
         $(this).css('border-color', '#5E6572');
         $(this).prev().css('color', '#5E6572');

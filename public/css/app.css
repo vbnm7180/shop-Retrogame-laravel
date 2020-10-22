@@ -1481,11 +1481,12 @@ template {
     transition: background .1s linear
 }
 
-.card__btn:hover {
-    background-color: #ffe38b
+.btn:hover {
+    background-color: #ffe38b;
+    cursor: pointer;
 }
 
-.card__btn:active {
+.btn:active {
     background-color: #efcf6b;
     outline: none
 }
@@ -1503,12 +1504,14 @@ template {
 }
 
 .game-btn-pressed:hover {
-    color: #ffe38b
+    color: #ffe38b;
+    background-color: transparent;
 }
 
 .game-btn-pressed:active {
     color: #efcf6b;
-    outline: none
+    background-color: transparent;
+    outline: none;
 }
 
 .game-btn {
@@ -1524,11 +1527,13 @@ template {
 }
 
 .game-btn:hover {
-    color: #ffe38b
+    color: #ffe38b;
+    background-color: transparent;
 }
 
 .game-btn:active {
     color: #efcf6b;
+    background-color: transparent;
     outline: none
 }
 
@@ -2078,7 +2083,8 @@ h1 {
     margin-bottom: 30px;
     box-shadow: -3px 4px 19px rgba(0, 0, 0, .1);
     border-radius: 7px;
-    overflow: hidden
+    overflow: hidden;
+    background-color: white;
 }
 
 .card__item:hover {
