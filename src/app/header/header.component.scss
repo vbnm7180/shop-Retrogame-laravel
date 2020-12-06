@@ -1,0 +1,64 @@
+.header {
+    background: #FFFFFF;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.12);
+}
+
+.header__container {
+    padding: 12px 0 24px 0;
+    width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    font-family: Oswald;
+    font-size: 20px;
+    color: #323232;
+}
+
+.header__left-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 355px;
+    margin-top: 15px;
+    margin-left: 3px;
+    margin-right: 184px;
+}
+
+.left-menu__item {}
+
+.header__logo {
+    width: 64px;
+    height: 84px;
+    margin-right: 265px;
+}
+
+.header__right-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 270px;
+    margin-top: 13px;
+}
+
+.right-menu__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phone-icon {
+    margin-right: 25px;
+}
+
+.phone-number {
+    margin-right: 57px;
+}
+
+.cart-icon {
+    margin-right: 25px;
+}
+
+.user-icon {}

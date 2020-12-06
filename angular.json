@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "RetrogameAngular"
+  "defaultProject": "RetrogameAngular",
+  "cli": {
+    "analytics": false
+  }
 }
