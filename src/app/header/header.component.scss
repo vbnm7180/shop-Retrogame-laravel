@@ -57,35 +57,41 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.phone-icon {
-    margin-right: 25px;
-}
-
-.phone-link {
     margin-right: 57px;
+    color: #323232;
     &:visited {
         color: #323232;
     }
     &:hover {
         color: #FFD550;
-        path {
-            fill: #FFD550;
-        }
-        path+path {
-            fill: #FFD550;
+        .phone-icon {
+            path {
+                fill: #FFD550;
+                stroke: #FFD550;
+            }
+            path+path {
+                fill: #FFD550;
+                stroke: #FFD550;
+            }
         }
     }
     &:active {
         color: #EFCF6B;
-        path {
-            fill: #EFCF6B;
-        }
-        path+path {
-            fill: #FFD550;
+        .phone-icon {
+            path {
+                fill: #FFD550;
+                stroke: #FFD550;
+            }
+            path+path {
+                fill: #FFD550;
+                stroke: #FFD550;
+            }
         }
     }
+}
+
+.phone-icon {
+    margin-right: 25px;
 }
 
 .cart-link {
