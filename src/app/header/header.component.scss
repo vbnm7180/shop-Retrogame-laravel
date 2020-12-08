@@ -26,7 +26,17 @@
     margin-right: 184px;
 }
 
-.left-menu__item {}
+.left-menu__item {
+    &:visited {
+        color: #323232;
+    }
+    &:hover {
+        color: #FFD550;
+    }
+    &:active {
+        color: #EFCF6B;
+    }
+}
 
 .header__logo {
     width: 64px;
@@ -43,7 +53,7 @@
     margin-top: 13px;
 }
 
-.right-menu__item {
+.phone-link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,12 +63,45 @@
     margin-right: 25px;
 }
 
-.phone-number {
+.phone-link {
     margin-right: 57px;
+    &:visited {
+        color: #323232;
+    }
+    &:hover {
+        color: #FFD550;
+        path {
+            fill: #FFD550;
+        }
+        path+path {
+            fill: #FFD550;
+        }
+    }
+    &:active {
+        color: #EFCF6B;
+        path {
+            fill: #EFCF6B;
+        }
+        path+path {
+            fill: #FFD550;
+        }
+    }
 }
 
-.cart-icon {
+.cart-link {
     margin-right: 25px;
 }
 
-.user-icon {}
+.cart-icon,
+.user-icon {
+    &:hover {
+        path {
+            fill: #FFD550;
+        }
+    }
+    &:active {
+        path {
+            fill: #EFCF6B;
+        }
+    }
+}
