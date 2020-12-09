@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SilderComponent } from './silder/silder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SilderComponent
   ],
   imports: [
     BrowserModule,
