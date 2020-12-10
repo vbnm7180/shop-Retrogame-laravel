@@ -1,5 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
+//Точки для слайдера
+.dot-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: Open Sans;
+    font-size: 16px;
+    color: #D1D1D1;
+}
+
+.dot-item li button {
+    font-family: Open Sans;
+    font-size: 16px;
+    color: #D1D1D1;
+    background: none;
+    //line-height: 22px;
+}
+
+.dot-item li.slick-active button {
+    font-size: 24px;
+    color: #454545;
+    line-height: 30px;
+}
+
+.dot-item li:first-child::after {
+    content: "/";
+    font-size: 16px;
+    color: #D1D1D1;
+}
+
 //Шрифты
 @font-face {
     font-family: "Oswald";

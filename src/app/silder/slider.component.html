@@ -2,12 +2,16 @@
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
         <img src="{{ slide.img }}" alt="" width="100%">
     </div>
+
 </ngx-slick-carousel>
 <div class="carousel-controls__wrapper">
     <div class="carousel-controls">
 
-        <img src="../../assets/images/left-arrow.svg" alt="" class="left">
-        <img src="../../assets/images/right-arrow.svg" alt="" class="right">
+        <img src="../../assets/images/left-arrow.svg" alt="" class="left-slide-btn">
+        <div class="slide-dots">
+
+        </div>
+        <img src="../../assets/images/right-arrow.svg" alt="" class="right-slide-btn">
 
     </div>
 </div>

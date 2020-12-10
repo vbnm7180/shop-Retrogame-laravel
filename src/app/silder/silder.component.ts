@@ -11,7 +11,15 @@ export class SilderComponent implements OnInit {
     {img: "../../assets/images/slide1.png"},
     {img: "../../assets/images/slide2.png"}
   ];
-  slideConfig = {"arrows":true,"prevArrow":".left","nextArrow":".right"};
+  slideConfig = {
+    "arrows":true,
+    "prevArrow":".left-slide-btn",
+    "nextArrow":".right-slide-btn",
+    "dots":true,
+    "appendDots":".slide-dots",
+    "dotsClass":"dot-item"
+
+  };
 
   constructor() { }
 
