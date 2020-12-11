@@ -1,6 +1,8 @@
     .header {
         background: #FFFFFF;
         box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.12);
+        position: relative;
+        z-index: 10;
     }
     
     .header__container {
@@ -94,8 +96,14 @@
         margin-right: 25px;
     }
     
+    .right-menu__item {
+        display: flex;
+    }
+    
     .cart-link {
         margin-right: 25px;
+        width: 100%;
+        height: 100%;
     }
     
     .cart-icon,
