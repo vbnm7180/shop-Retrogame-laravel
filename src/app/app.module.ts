@@ -7,12 +7,14 @@ import { HeaderComponent } from './header/header.component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SilderComponent } from './silder/silder.component';
+import { ConsolesComponent } from './consoles/consoles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SilderComponent
+    SilderComponent,
+    ConsolesComponent
   ],
   imports: [
     BrowserModule,

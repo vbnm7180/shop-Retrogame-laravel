@@ -40,6 +40,20 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: 'Nunito';
+    src: local('Nunito Regular'), local('Nunito-Regular'), url('./assets/fonts/NunitoRegular/Nunitoregular.woff2') format('woff2'), url('./assets/fonts/NunitoRegular/Nunitoregular.woff') format('woff'), url('./assets/fonts/NunitoRegular/Nunitoregular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NunitoSemibold';
+    src: local('Nunito SemiBold'), local('Nunito-SemiBold'), url('./assets/fonts/NunitoSemibold/Nunitosemibold.woff2') format('woff2'), url('./assets/fonts/NunitoSemibold/Nunitosemibold.woff') format('woff'), url('./assets/fonts/NunitoSemibold/Nunitosemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
 
 /*Обнуление*/
 
