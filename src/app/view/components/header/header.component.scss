@@ -1,0 +1,193 @@
+    .header {
+        background: #FFFFFF;
+        box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.12);
+        position: relative;
+        z-index: 10;
+    }
+    
+    .header__container {
+        padding: 12px 0 24px 0;
+        width: 1140px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        font-family: Oswald;
+        font-size: 20px;
+        color: #323232;
+    }
+    
+    .header__left-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 355px;
+        margin-top: 15px;
+        margin-left: 3px;
+        margin-right: 184px;
+    }
+    
+    .left-menu__item {
+        &:visited {
+            color: #323232;
+        }
+        &:hover {
+            color: #FFD550;
+        }
+        &:active {
+            color: #EFCF6B;
+        }
+    }
+    
+    .header__logo {
+        width: 64px;
+        height: 84px;
+        margin-right: 265px;
+    }
+    
+    .header__right-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        width: 270px;
+        margin-top: 13px;
+    }
+    
+    .phone-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 57px;
+        color: #323232;
+        &:visited {
+            color: #323232;
+        }
+        &:hover {
+            color: #FFD550;
+            .phone-icon {
+                path {
+                    fill: #FFD550;
+                    stroke: #FFD550;
+                }
+                path+path {
+                    fill: #FFD550;
+                    stroke: #FFD550;
+                }
+            }
+        }
+        &:active {
+            color: #EFCF6B;
+            .phone-icon {
+                path {
+                    fill: #EFCF6B;
+                    stroke: #EFCF6B;
+                }
+                path+path {
+                    fill: #EFCF6B;
+                    stroke: #EFCF6B;
+                }
+            }
+        }
+    }
+    
+    .phone-icon {
+        margin-right: 25px;
+    }
+    
+    .right-menu__item {
+        display: flex;
+    }
+    
+    .cart-link {
+        margin-right: 25px;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .cart-icon,
+    .user-icon {
+        &:hover {
+            path {
+                fill: #FFD550;
+            }
+        }
+        &:active {
+            path {
+                fill: #EFCF6B;
+            }
+        }
+    }
+    
+    .header__burger-menu {
+        display: none;
+    }
+    
+    //Планшеты
+    @media screen and (max-width:1127px) and (min-width:767px) {
+        .header__container {
+            width: 768px;
+            justify-content: space-evenly;
+        }
+        .header__left-menu {
+            width: 250px;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .header__right-menu {
+            width: 220px;
+        }
+        .header__logo {
+            margin-right: 0;
+        }
+        .phone-link {
+            margin-right: 30px;
+        }
+        .phone-icon {
+            margin-right: 10px;
+        }
+        .header__burger-menu {
+            display: none;
+        }
+    }
+    
+    //Телефоны
+    @media screen and (max-width:766px) {
+        .header__container {
+            width: 100%;
+            justify-content: center;
+        }
+        .phone-link {
+            display: none;
+        }
+        .header__left-menu {
+            display: none;
+            width: 250px;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .header__right-menu {
+            width: 90px;
+            margin-left: 10px;
+        }
+        .logo-icon {
+            width: 54px;
+            height: 74px;
+        }
+        .header__logo {
+            //margin-right: 35px;
+            margin: 0 auto;
+        }
+        .header__burger-menu {
+            display: flex;
+            align-items: center;
+            margin-top: 13px;
+            margin-right: 70px;
+            margin-left: 20px;
+        }
+        .burger-icon {
+            width: 30px;
+            height: 30px;
+        }
+    }

@@ -1,0 +1,26 @@
+.slide {
+    cursor: pointer;
+}
+
+.carousel-controls__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 33px;
+    padding-top: 14px;
+}
+
+.carousel-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+}
+
+.left-slide-btn,
+.right-slide-btn {
+    cursor: pointer;
+    width: 31px;
+    height: 12px;
+}
